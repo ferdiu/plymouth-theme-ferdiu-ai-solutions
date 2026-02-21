@@ -66,6 +66,7 @@ sed -i \
     -e 's/^Name\(.*\)=.*/Name\1=ferdiu AI solutions/' \
     -e 's/^Description\(.*\)=.*/Description\1=Plymouth theme branded for ferdiu AI solutions/' \
     -e 's/^ProgressBarForegroundColor=.*/ProgressBarForegroundColor=0xb875dc/' \
+    -e 's|^ImageDir=.*|ImageDir='"%{_datadir}/plymouth/themes/ferdiu-ai-solutions/"'|' \
     %{buildroot}%{_datadir}/plymouth/themes/ferdiu-ai-solutions/ferdiu-ai-solutions.plymouth
 
 %post
