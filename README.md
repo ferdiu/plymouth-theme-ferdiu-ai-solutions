@@ -1,5 +1,3 @@
-![ferdiu ai solutions plymouth theme](screenshot.png)
-
 # plymouth-theme-ferdiu-ai-solutions
 
 A minimal Plymouth two-step theme for **ferdiu ai solutions**.
