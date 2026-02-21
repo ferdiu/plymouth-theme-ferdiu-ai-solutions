@@ -6,7 +6,7 @@ Summary:        Spinner plymouth theme branded for ferdiu AI solutions
 License:        MIT AND LicenseRef-Logo-Proprietary
 URL:            https://github.com/ferdiu/plymouth-theme-ferdiu-ai-solutions
 
-Source0:        https://github.com/ferdiu/%{name}/archive/refs/tags/v%{version}.tar.gz
+Source0:        https://github.com/ferdiu/%{name}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 
 BuildArch:      noarch
 
@@ -37,7 +37,7 @@ rm -rf %{buildroot}
 # Install theme directory
 install -d %{buildroot}%{_datadir}/plymouth/themes/ferdiu-ai-solutions
 
-cp -a themes/spinner/* \
+cp -a %{_datadir}/plymouth/themes/spinner/* \
    %{buildroot}%{_datadir}/plymouth/themes/ferdiu-ai-solutions/
 
 # Replace watermark
@@ -73,7 +73,7 @@ fi
 %{_datadir}/plymouth/themes/ferdiu-ai-solutions
 
 %changelog
-* Fri Feb 20 2026 Federico Manzella - 1.0-1
+* Sat Feb 21 2026 Federico Manzella <ferdiu.manzella@gmail.com> - 1.0-1
 - Initial COPR-ready release
 - Based on Fedora spinner theme
 - Replaced watermark
