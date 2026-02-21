@@ -1,7 +1,7 @@
 Name:           plymouth-theme-ferdiu-ai-solutions
 Version:        1.0
 Release:        1%{?dist}
-Summary:        Spinner plymouth theme branded for ferdiu AI solutions
+Summary:        BGRT plymouth theme branded for ferdiu AI solutions
 
 License:        MIT AND LicenseRef-Logo-Proprietary
 URL:            https://github.com/ferdiu/plymouth-theme-ferdiu-ai-solutions
@@ -16,10 +16,14 @@ Requires(post): dracut
 Requires(postun): plymouth
 Requires(postun): dracut
 
-%description
-A branded variant of the Fedora spinner plymouth theme.
+# The original theme
+Requires: plymouth-theme-spinner
+Requires: plymouth-theme-bgrt
 
-Visually identical to the default spinner theme,
+%description
+A branded variant of the Fedora BGRT plymouth theme.
+
+Visually identical to the default bgrt theme,
 but replaces the watermark logo and metadata with
 ferdiu AI solutions branding.
 
@@ -37,8 +41,16 @@ rm -rf %{buildroot}
 # Install theme directory
 install -d %{buildroot}%{_datadir}/plymouth/themes/ferdiu-ai-solutions
 
+# Copy resources from spinner theme
 cp -a %{_datadir}/plymouth/themes/spinner/* \
    %{buildroot}%{_datadir}/plymouth/themes/ferdiu-ai-solutions/
+
+# Remove spinner.plymouth
+rm %{buildroot}%{_datadir}/plymouth/themes/ferdiu-ai-solutions/spinner.plymouth
+
+# Use the bgrt.plymouth instead
+cp %{_datadir}/plymouth/themes/bgrt/bgrt.plymouth \
+   %{buildroot}%{_datadir}/plymouth/themes/ferdiu-ai-solutions/ferdiu-ai-solutions.plymouth
 
 # Replace watermark
 install -m 0644 ferdiu-ai-solutions-logo.png \
@@ -47,13 +59,9 @@ install -m 0644 ferdiu-ai-solutions-logo.png \
 # Patch metadata + accent color
 sed -i \
     -e 's/^Name\(.*\)=.*/Name\1=ferdiu AI solutions/' \
-    -e 's/^Description\(.*\)=.*/Description\1=Spinner theme branded for ferdiu AI solutions/' \
+    -e 's/^Description\(.*\)=.*/Description\1=Plymouth theme branded for ferdiu AI solutions/' \
     -e 's/^ProgressBarForegroundColor=.*/ProgressBarForegroundColor=0xb875dc/' \
-    %{buildroot}%{_datadir}/plymouth/themes/ferdiu-ai-solutions/spinner.plymouth
-
-# Rename descriptor
-mv %{buildroot}%{_datadir}/plymouth/themes/ferdiu-ai-solutions/spinner.plymouth \
-   %{buildroot}%{_datadir}/plymouth/themes/ferdiu-ai-solutions/ferdiu-ai-solutions.plymouth
+    %{buildroot}%{_datadir}/plymouth/themes/ferdiu-ai-solutions/ferdiu-ai-solutions.plymouth
 
 %post
 plymouth-set-default-theme ferdiu-ai-solutions >/dev/null 2>&1 || :
@@ -75,7 +83,7 @@ fi
 %changelog
 * Sat Feb 21 2026 Federico Manzella <ferdiu.manzella@gmail.com> - 1.0-1
 - Initial COPR-ready release
-- Based on Fedora spinner theme
+- Based on Fedora bgrt theme
 - Replaced watermark
 - Updated metadata
 - Accent color #b875dc
