@@ -18,6 +18,7 @@ Requires(postun): dracut
 
 # The original theme
 Requires: plymouth-theme-spinner
+BuildRequires: plymouth-theme-spinner
 
 %description
 A branded variant of the Fedora BGRT plymouth theme.
