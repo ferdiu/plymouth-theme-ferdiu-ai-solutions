@@ -18,7 +18,6 @@ Requires(postun): dracut
 
 # The original theme
 Requires: plymouth-theme-spinner
-Requires: plymouth-theme-bgrt
 
 %description
 A branded variant of the Fedora BGRT plymouth theme.
@@ -51,6 +50,12 @@ rm %{buildroot}%{_datadir}/plymouth/themes/ferdiu-ai-solutions/spinner.plymouth
 # Use the bgrt.plymouth instead
 cp %{_datadir}/plymouth/themes/bgrt/bgrt.plymouth \
    %{buildroot}%{_datadir}/plymouth/themes/ferdiu-ai-solutions/ferdiu-ai-solutions.plymouth
+
+# Replace entry and lock images (luks)
+install -m 0644 entry.png \
+    %{buildroot}%{_datadir}/plymouth/themes/ferdiu-ai-solutions/entry.png
+install -m 0644 lock.png \
+    %{buildroot}%{_datadir}/plymouth/themes/ferdiu-ai-solutions/lock.png
 
 # Replace watermark
 install -m 0644 ferdiu-ai-solutions-logo.png \
