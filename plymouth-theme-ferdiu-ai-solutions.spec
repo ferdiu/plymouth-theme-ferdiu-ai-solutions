@@ -1,5 +1,5 @@
 Name:           plymouth-theme-ferdiu-ai-solutions
-Version:        1.0
+Version:        1.1
 Release:        1%{?dist}
 Summary:        BGRT plymouth theme branded for ferdiu AI solutions
 
@@ -88,6 +88,9 @@ fi
 %{_datadir}/plymouth/themes/ferdiu-ai-solutions
 
 %changelog
+* Thu Apr 30 2026 Federico Manzella <ferdiu.manzella@gmail.com> - 1.1-1
+- Update logo with fixed font
+
 * Sat Feb 21 2026 Federico Manzella <ferdiu.manzella@gmail.com> - 1.0-1
 - Initial COPR-ready release
 - Based on Fedora bgrt theme
