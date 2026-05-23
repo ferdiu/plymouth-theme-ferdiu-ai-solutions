@@ -29,6 +29,7 @@ env:
 ##############################################################################
 # Job: Build the theme
 ##############################################################################
+jobs:
   BuildPlymouthTheme:
     runs-on: ubuntu-latest
     container: fedora:latest
